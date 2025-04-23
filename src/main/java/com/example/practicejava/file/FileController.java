@@ -7,10 +7,21 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/demo")
 public class FileController {
+
+    @RequestMapping("/fileview/{id}")
+    public void fileView(@PathVariable("id") Long id, @RequestParam(required = false) Map map, HttpServletResponse response) throws Exception {
+
+        System.out.println("id:" + id);
+
+        System.out.println(map.toString());
+//        return AjaxResult.success("成功",fileService.fileView(id, response));
+//        return AjaxResult.success("成功",fileService.liindatafileview(id, response));
+    }
 
     @PostMapping(path = {"/upload"})
     public void getMs(@RequestPart("file") MultipartFile[] files) throws IOException {
